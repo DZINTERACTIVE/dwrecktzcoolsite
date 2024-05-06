@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+  <script>
+    function start() {
+      sjs.open("target", 1500, 2000);
+      
+      //Background
+      var background1 = new sjs.Image("Images/Background1.png");
+      background1.type = "background1";
+      background1.setSize(1500, 2000);
+
+      //Top Text
+      dtext = new sjs.Image("Images/dtext.png");
+      dtext.type = "dtext";
+      dtext.offset(430, 20);
+
+      //Scary Eye Poster
+      var scaryeyeposter = new sjs.Image("Images/scaryeyeposter.png");
+      scaryeyeposter.type = "scaryeyeposter";
+      scaryeyeposter.setSize(600, 620);
+      scaryeyeposter.offset(460, 200);
+
+      //Eye Poster Text
+      var eyetext = new sjs.Image("Images/eyepostertext.png")
+      eyetext.type = "eyetext";
+      eyetext.setSize(600, 600);
+      eyetext.offset(460, 200);
+
+      //Box With Buttons
+      var box = new sjs.Image("Images/box.png");
+      box.type = "box";
+      box.setSize(500, 100);
+      box.offset(505, 850);
+
+      //Buttons
+
+      vidbtn = new sjs.Button("Video Here!", function(){
+        window.location = "https://youtu.be/2MlI4qtMURM?feature=shared";
+      });
+
+      vidbtn.offset(700, 890);
+
+      dbtn = new sjs.Button("Discord", function(){
+        window.location = "https://discord.gg/DbgW9UHRSn";
+      });
+
+      dbtn.offset(530, 890);
+
+      dzbtn = new sjs.Button("D.Z.", function(){
+        window.location = "https://dzinteractive.github.io/D.Z.-INTERACTIVE-HQ/index.html";
+      });
+
+      dzbtn.offset(920, 890);
+
+      //Player & Controls
+
+      var player = new sjs.Image("Images/player.png");
+      player.type = "player";
+      player.setSize(50, 50);
+      player.offset(600, 1200);
+
+      sjs.keyDown(W_KEY, function(){
+        player.pushUp();
+      });
+
+      sjs.keyDown(S_KEY, function(){
+        player.pushDown();
+      });
+
+      sjs.keyDown(A_KEY, function(){
+        player.pushLeft();
+      });
+
+      sjs.keyDown(D_KEY, function(){
+        player.pushRight();
+      });
+
+      //Player Collisions
+
+      sjs.onHit("player", "dtext", function(player, dtext){
+        sjs.bounceOff(player, dtext);
+      });
+
+      sjs.onHit("player", "scaryeyeposter", function(player, scaryeyeposter){
+        sjs.bounceOff(player, scaryeyeposter);
+      });
+
+      sjs.onHit("player", "box", function(player, box){
+        sjs.bounceOff(player, box);
+      });
+
+
+      
+      
+
+      
+    }
+  </script>
+</head>
+
+<body onload="start()">
+  <h1></h1>
+  <div id="target" style="margin:auto;background:black;"></div>
+</body>
+
+</html>
